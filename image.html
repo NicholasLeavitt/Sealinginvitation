@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engagement Album - Hannah & Nick</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --plum: #5e2a5e;
+            --sage: #7a9478;
+            --soft-white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .invite-card {
+            background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), 
+                        url('IMG_1083.jpg');
+            background-size: cover;
+            background-position: center;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            z-index: 1;
+        }
+
+        .floral-border {
+            width: 100%;
+            display: block;
+            line-height: 0;
+        }
+
+        .floral-border img {
+            width: 100%;
+            height: auto;
+            display: block;
+            mix-blend-mode: multiply;
+        }
+
+        .upside-down {
+            transform: rotate(180deg);
+        }
+
+        .content {
+            padding: 20px 40px 40px 40px;
+            text-align: center;
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        h2 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.5rem;
+            color: var(--plum);
+            margin: 10px 0;
+            font-weight: 400;
+        }
+
+        .subtext {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: clamp(4px, 3vw, 14px); 
+    color: #888;
+    margin: 20px 0;
+}
+.subtextreg {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    /* This tells the font to be 1% of the screen width, 
+       but never smaller than 7px or larger than 14px */
+    font-size: clamp(7px, 1vw, 14px); 
+    color: #888;
+    margin: clamp(7px, 1vw, 14px) 0;
+}
+
+        /* 1. The Grid: We change "minmax" to allow more flexibility */
+.gallery-grid {
+    display: grid;
+    /* Use 1fr 1fr to force exactly two equal columns regardless of screen size */
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 10px; /* Reducing gap slightly for smaller screens */
+    margin: 20px 0;
+    align-items: start;
+}
+
+/* 2. The Item: We remove "aspect-ratio" and "height" */
+.gallery-item {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 4px;
+    /* Reduced border from 4px to 2px for mobile clarity */
+    border: 2px solid white; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: transparent;
+}
+
+/* 3. The Image: We use "width: 100%" and "height: auto" */
+.gallery-item img {
+    width: 100%;
+    height: auto;       /* This is the key to original proportions */
+    display: block;     /* Removes tiny gaps at the bottom of images */
+    object-fit: contain; /* Ensures the whole image fits without cropping */
+    transition: transform 0.3s ease;
+}
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            background-color: var(--plum);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+            width: 200px;
+            height: 50px;
+        }
+
+        .back-button:hover {
+            background-color: var(--sage);
+            transform: translateY(-2px);
+        }
+	/* Lightbox background */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The actual image in the lightbox */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+/* Close button */
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* Add a pointer cursor to gallery items so people know they can click */
+.gallery-item {
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+	
+   	 <div class="invite-card">
+        <div class="floral-border upside-down">
+            <img src="1000_F_435595400_O4Z5kKkVqdilMxRCiQCsDJ4M6PGhdE3s.png" alt="Floral Border">
+        </div>
+	<div id="imageLightbox" class="lightbox" onclick="closeLightbox()">
+  	  <span class="close-lightbox">&times;</span>
+   	 <img class="lightbox-content" id="fullImage">
+   	 </div>
+        <div class="content">
+            <h2>Our Engagement Album</h2>
+            <p class="subtext">Captured Moments</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(1).jpeg" alt="Engagement Photo 1"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(2).jpeg" alt="Engagement Photo 2"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(3).jpeg" alt="Engagement Photo 3"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(4).jpeg" alt="Engagement Photo 4"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(5).jpeg" alt="Engagement Photo 5"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(6).jpeg" alt="Engagement Photo 6"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(7).jpeg" alt="Engagement Photo 7"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(8).jpeg" alt="Engagement Photo 8"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(9).jpeg" alt="Engagement Photo 9"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(10).jpeg" alt="Engagement Photo 10"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(11).jpeg" alt="Engagement Photo 11"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(12).jpeg" alt="Engagement Photo 12"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(13).jpeg" alt="Engagement Photo 13"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(14).jpeg" alt="Engagement Photo 14"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(15).jpeg" alt="Engagement Photo 15"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(16).jpeg" alt="Engagement Photo 16"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(17).jpeg" alt="Engagement Photo 17"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(18).jpeg" alt="Engagement Photo 18"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(19).jpeg" alt="Engagement Photo 19"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(20).jpeg" alt="Engagement Photo 20"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(21).jpeg" alt="Engagement Photo 21"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(22).jpeg" alt="Engagement Photo 22"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(23).jpeg" alt="Engagement Photo 23"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(24).jpeg" alt="Engagement Photo 24"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(25).jpeg" alt="Engagement Photo 25"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(26).jpeg" alt="Engagement Photo 26"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(27).jpeg" alt="Engagement Photo 27"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(28).jpeg" alt="Engagement Photo 28"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(29).jpeg" alt="Engagement Photo 29"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(30).jpeg" alt="Engagement Photo 30"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(31).jpeg" alt="Engagement Photo 31"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(32).jpeg" alt="Engagement Photo 32"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(33).jpeg" alt="Engagement Photo 33"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(34).jpeg" alt="Engagement Photo 34"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(35).jpeg" alt="Engagement Photo 35"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(36).jpeg" alt="Engagement Photo 36"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(37).jpeg" alt="Engagement Photo 37"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(38).jpeg" alt="Engagement Photo 38"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(39).jpeg" alt="Engagement Photo 39"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(40).jpeg" alt="Engagement Photo 40"></div>
+                <div class="gallery-item"><img src="Engagement Photos/IMG_(41).jpeg" alt="Engagement Photo 41"></div>
+		<div class="gallery-item"><img src="Screenshot 2026-04-05 140547.png" alt="Registry"><p class="subtextreg">Our Registry!</p></div>
+		
+            </div>
+		
+            <a href="index.html" class="back-button">← BACK TO INVITE</a>
+        </div>
+
+        <div class="floral-border">
+            <img src="1000_F_435595400_O4Z5kKkVqdilMxRCiQCsDJ4M6PGhdE3s.png" alt="Floral Border">
+        </div>
+    </div>
+    
+    <script>
+    function openLightbox(src) {
+        const lightbox = document.getElementById("imageLightbox");
+        const fullImg = document.getElementById("fullImage");
+        lightbox.style.display = "flex";
+        fullImg.src = src;
+    }
+
+    function closeLightbox() {
+        document.getElementById("imageLightbox").style.display = "none";
+    }
+
+    // Automatically add the click function to all your images
+    document.querySelectorAll('.gallery-item img').forEach(image => {
+        image.onclick = function() {
+            openLightbox(this.src);
+        };
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP Sealing Ceremony - Hannah & Nick</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --plum: #5e2a5e;
+            --sage: #7a9478;
+            --soft-white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .invite-card {
+            background-color: var(--soft-white);
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .floral-border {
+            width: 100%;
+            display: block;
+            line-height: 0;
+        }
+
+        .floral-border img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .upside-down {
+            transform: rotate(180deg);
+        }
+
+        .content {
+            padding: 10px 40px 40px 40px;
+            text-align: center;
+            margin-top: -40px;
+            margin-bottom: -20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        h2 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.5rem;
+            color: var(--plum);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        /* Registry Section Styling */
+        .registry-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin: 25px 0;
+            padding: 20px;
+            border: 1px solid #eee;
+            background: rgba(203, 165, 209, 0.30);
+            border-radius: 8px;
+        }
+
+        .registry-item {
+            flex: 1;
+        }
+
+        .registry-title {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.7rem;
+            color: var(--plum);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .qr-code {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        form {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #777;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+            background-color: #fafafa;
+        }
+
+        .radio-group {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            text-transform: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .radio-option input { margin-right: 10px; }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            padding: 16px;
+            background-color: var(--plum);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--sage);
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: #bbb;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invite-card">
+        <div class="floral-border upside-down">
+            <img src="1000_F_435595400_O4Z5kKkVqdilMxRCiQCsDJ4M6PGhdE3s.png" alt="Floral Border">
+        </div>
+
+        <div class="content">
+            <h2>Kindly Respond</h2>
+            
+            <div class="registry-container">
+                <div class="registry-item">
+                    <div class="registry-title">Venmo Registry</div>
+                    <img src="image0.jpeg" alt="Venmo QR Code" class="qr-code">
+                </div>
+                <div class="registry-item">
+                    <div class="registry-title">Amazon Registry</div>
+                    <img src="Screenshot 2026-04-05 140547.png" alt="Amazon QR Code" class="qr-code">
+                </div>
+            </div>
+
+            <form action="https://formspree.io/f/xjgpjkev" method="POST">
+                <div class="form-group">
+                    <label for="names">Guest Name(s)</label>
+                    <input type="text" id="names" name="guest_names" placeholder="Full names of all guests" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Attendance</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="attendance" value="Accept" required> Happily Accepts
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="attendance" value="Decline"> Regretfully Declines
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="count">Total Number Attending</label>
+                    <select id="count" name="total_guests">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4+</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Dietary Notes / Message</label>
+                    <textarea id="notes" name="message" rows="3" placeholder="Any allergies or well wishes..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">SUBMIT RSVP</button>
+                <a href="index.html" class="back-link">← Back to Invitation</a>
+            </form>
+        </div>
+
+        <div class="floral-border">
+            <img src="1000_F_435595400_O4Z5kKkVqdilMxRCiQCsDJ4M6PGhdE3s.png" alt="Floral Border">
+        </div>
+    </div>
+
+</body>
+</html>
